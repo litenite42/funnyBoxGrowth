@@ -1,0 +1,9 @@
+# Binaries for programs and plugins
+main
+funnyBoxGrowth
+*.exe
+*.exe~
+*.so
+*.dylib
+*.dll
+vls.log
