@@ -16,15 +16,16 @@ mut:
 	population []interfaces.IAnimal
 }
 
-
-
 pub fn (mut fab FunnyAnimalBuilder) init(allowed_genes core.GeneSequence) {
 	fab.genome = allowed_genes
 }
 
 pub fn (fab FunnyAnimalBuilder) create_new() interfaces.IAnimal {
-	hair := fab.genome.get_one(0, 'Hair') or { builders.default_hair_genes[0] }
-
+	hair := fab.genome.get_one('Hair') or {
+		ndx := rand.intn(builders.default_hair_genes.len) or { 0 }
+		builders.default_hair_genes[ndx]
+	}
+  
 	sex := fab.genome['Sex'][1]
 	bt := fab.genome['BodyType'][2]
 
