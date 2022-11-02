@@ -25,9 +25,14 @@ pub fn (fab FunnyAnimalBuilder) create_new() interfaces.IAnimal {
 		ndx := rand.intn(builders.default_hair_genes.len) or { 0 }
 		builders.default_hair_genes[ndx]
 	}
-  
-	sex := fab.genome['Sex'][1]
-	bt := fab.genome['BodyType'][2]
+
+	sex := fab.genome.get_one('Sex') or {
+		core.rand_enum<core.Sex>(core.sex_max)
+	}
+
+	bt := fab.genome.get_one('BodyType') or {
+		core.rand_enum<core.BodyType>(core.body_type_max)
+	}
 
 	mut genes := {
 		'Hair':     [hair]

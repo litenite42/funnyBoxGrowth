@@ -28,6 +28,12 @@ pub enum Hair {
 }
 
 pub const (
+	body_type_max = 2
+	sex_max = 1
+	hair_max = 4
+)
+
+pub const (
 	sex_genes       = [Gene(Sex.male), Sex.female]
 	body_type_genes = [Gene(BodyType.unfit), BodyType.average, BodyType.athletic]
 )
