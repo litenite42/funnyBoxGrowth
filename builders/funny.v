@@ -20,7 +20,7 @@ pub fn (mut fab FunnyAnimalBuilder) init(allowed_genes core.GeneSequence) {
 	fab.genome = allowed_genes
 }
 
-pub fn (fab FunnyAnimalBuilder) create_new() interfaces.IAnimal {
+pub fn (mut fab FunnyAnimalBuilder) create_new() {
 	hair := fab.genome.get_one('Hair') or {
 		ndx := rand.intn(builders.default_hair_genes.len) or { 0 }
 		builders.default_hair_genes[ndx]
@@ -44,5 +44,10 @@ pub fn (fab FunnyAnimalBuilder) create_new() interfaces.IAnimal {
 		generation_nbr: 1
 		genes: core.GeneSequence(genes)
 	}
-	return interfaces.IAnimal(animal)
+	
+	fab.population << interfaces.IAnimal(animal)
+}
+
+pub fn (fab FunnyAnimalBuilder) get_population() []interfaces.IAnimal {
+	return fab.population
 }

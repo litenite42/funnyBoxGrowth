@@ -1,7 +1,6 @@
 module main
 import core
 import builders
-import animals
 
 fn main() {
 	mut fab := builders.FunnyAnimalBuilder{}
@@ -11,6 +10,6 @@ fn main() {
 		'BodyType' : core.body_type_genes
 	})
 
-	mut animal := fab.create_new()
-	println(animal)
+	fab.create_new()
+	println(fab.get_population())
 }

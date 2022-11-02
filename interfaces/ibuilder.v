@@ -8,5 +8,6 @@ mut:
 	genome core.GeneSequence
 	population []IAnimal
 	init(core.GeneSequence)
-	create_new() IAnimal
+	create_new()
+	get_population() []IAnimal
 }
