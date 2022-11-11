@@ -1,9 +1,12 @@
 module animals
 
 import core
+import animals.base
 
 pub struct Funny {
-	id             int
-	genes          core.GeneSequence
-	generation_nbr int
+	base.Animal
+}
+
+pub fn (f Funny) str() string {
+	return 'Funny $f.Animal.str()'
 }

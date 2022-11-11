@@ -1,15 +1,18 @@
 module main
+
 import core
 import builders
+import interfaces
 
 fn main() {
-	mut fab := builders.FunnyAnimalBuilder{}
+	mut fab :=  interfaces.IAnimalBuilder(builders.FunnyAnimalBuilder{})
 
 	fab.init({
-		'Sex' : core.sex_genes,
-		'BodyType' : core.body_type_genes
+		'Sex':      core.sex_genes
+		'BodyType': core.body_type_genes
 	})
 
-	fab.create_new()
-	println(fab.get_population())
+	fab.create_n(nbr: 15)
+
+	println(fab)
 }

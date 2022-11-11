@@ -1,4 +1,5 @@
 module core
+
 import rand
 
 pub fn rand_enum<T>(max int) T {

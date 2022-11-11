@@ -1,6 +1,7 @@
 module core
 
 import rand
+import strings
 
 pub type GeneSequence = map[string][]Gene
 
@@ -25,4 +26,21 @@ pub fn (gs GeneSequence) get_one(gene string) ?Gene {
 		ndx := rand.intn(sequence.len) or { 0 }
 		sequence[ndx]
 	}
+}
+
+pub fn (gs GeneSequence) str() string {
+	mut bldr := strings.new_builder(100)
+	mut count := 0
+
+	for _, components in gs {
+		mut components_str := components.map(it.str()).join(';')
+		if count > 0 {
+			components_str = '|' + components_str
+		}
+
+		bldr.write_string(components_str)
+		count++
+	}
+
+	return bldr.str()
 }
